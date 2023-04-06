@@ -8,6 +8,7 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 gem 'bootstrap', '~> 5.2.2'
 gem 'jquery-rails'
 gem 'mini_racer'
+gem 'bcrypt', '~> 3.1.7'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"

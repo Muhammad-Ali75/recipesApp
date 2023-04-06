@@ -5,4 +5,4 @@ import "controllers"
 //= require jquery-ui
 //= require popper
 //= require bootstrap-sprockets
-//= require bootstrap
+import "bootstrap"

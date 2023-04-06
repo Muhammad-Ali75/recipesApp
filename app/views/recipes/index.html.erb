@@ -1,6 +1,6 @@
 <h1 style="text-align:center">List of All Recipes</h1>
+<a class="btn btn-outline-dark btn-lg" href="recipes/new" role="button">Create New</a>
 <hr>
-
 <% @recipes.each do |recipe|%>
     <div class="row">
         <div class="col-md-2" style="background-color= #454545">
@@ -9,7 +9,7 @@
             </section>    
         </div>
         <div class="col-md-8 well">
-            <h4><%= recipe.name %></h4>
+            <h4><%= link_to recipe.name, recipe_path(recipe)%></h4>
             <p><%= truncate(recipe.description, length: 150)%></p>
             <p>
                 <span class="quite">
