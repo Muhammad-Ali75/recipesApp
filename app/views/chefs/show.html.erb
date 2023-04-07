@@ -1,1 +1,16 @@
-<h1>CHEF</h1>
+<h1 align="center"><%= "Chef #{@chef.chefname}'s profile"%></h1>
+<div align="center">
+    <% if logged_in? && current_chef == @chef %>
+        <a align="left"><%= link_to "Create new Recipe", new_recipe_path, class: "btn btn-xs btn-outline-dark"%></a>
+        <a align="center"><%= link_to "Edit Profile", edit_chef_path, class: "btn btn-xs btn-warning"%></a>
+    <%end%>
+    <a align="right"><%= button_to "Logout", logout_path,  method: :delete, class: "btn btn-xs btn-danger"%></a>
+
+</div>
+<hr>
+<br>
+<h4 align="center"><%= @chef.chefname%>'s recipes</h4>
+<%= will_paginate @chef_recipes %>
+
+<%= render 'recipes/recipes', obj: @chef_recipes%> 
+ 

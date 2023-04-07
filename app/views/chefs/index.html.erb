@@ -1,0 +1,30 @@
+<h1 align="center">All Chefs</h1>
+<hr>
+<div align="center">
+    <%= will_paginate @chefs %>
+
+    <% @chefs.each do |chef| %>
+    <div class="row">
+        <div class="col-md-2" background-color="#454545">
+            <section class="center">
+
+            </section>    
+        </div>
+        <div class="col-md-8 well">
+            <h4><%= link_to "#{chef.chefname.capitalize}", chef_path(chef) %></h4>
+            <p><%= pluralize(chef.recipes.count, "recipe")%></p>
+            <p>
+                <span class="quite">
+                    <small>Created <%= time_ago_in_words(chef.created_at)%> ago</small>
+                </span>
+            </p>
+        </div>
+        <% if logged_in? && current_chef.admin? && !chef.admin?%>
+            <%= button_to "Delete chef", chef_path(chef),  method: :delete, class: "btn btn-xs btn-danger"%>
+        <% end %>
+        <br><br>
+    </div>
+    <%end%>
+    <%= will_paginate @chefs %>
+
+</div>

@@ -13,16 +13,23 @@
         <li class="nav-item">
           <a><%= link_to "Recipies", recipes_path, class: "nav-link active" %></a>
         </li>
+      <% if logged_in? %>
+
         <li class="nav-item">
             <a><%= link_to "Create New Recipe", new_recipe_path, class: "nav-link active" %></a>
         </li>
+        <% end %>
+        <li class="nav-item">
+            <a><%= link_to "Chefs", chefs_path, class: "nav-link active" %></a>
+        </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-        <button class="btn btn-outline-light"><%= link_to "SignUp", new_chef_path, class: "nav-link" %></button>
-        <button class="btn btn-outline-light"><%= link_to "LogIn", new_chef_path, class: "nav-link" %></button>
+      <% if logged_in? %>
+        <button class="btn btn-outline-light"><%= link_to "Profile", chef_path(current_chef), class: "nav-link" %></button> |
+        <%= button_to "LogOut", logout_path, method: :delete, class: "btn btn-outline-light" %>
+        <%else%>
+        <button class="btn btn-outline-light"><%= link_to "SignUp", new_chef_path, class: "nav-link" %></button> |
+        <button class="btn btn-outline-light"><%= link_to "LogIn", login_path, class: "nav-link" %></button>
+        <%end%>
     </div>
   </div>
 </nav>

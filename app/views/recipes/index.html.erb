@@ -1,22 +1,7 @@
 <h1 style="text-align:center">List of All Recipes</h1>
 <a class="btn btn-outline-dark btn-lg" href="recipes/new" role="button">Create New</a>
 <hr>
-<% @recipes.each do |recipe|%>
-    <div class="row">
-        <div class="col-md-2" style="background-color= #454545">
-            <section class="center">
-
-            </section>    
-        </div>
-        <div class="col-md-8 well">
-            <h4><%= link_to recipe.name, recipe_path(recipe)%></h4>
-            <p><%= truncate(recipe.description, length: 150)%></p>
-            <p>
-                <span class="quite">
-                    <small>Created <%= time_ago_in_words(recipe.created_at)%> ago</small>
-                </span>
-            </p>
-        </div>
-    </div>
-    
-<%end%>
+<div align="center">
+    <%= will_paginate @recipes %>
+</div>
+<%= render "recipes", obj: @recipes %>
